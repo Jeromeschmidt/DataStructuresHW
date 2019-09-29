@@ -1,0 +1,33 @@
+#include <vector>
+#include "csce310homeWork03part01.h"
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
+int minimumST( vector< vector<int> > adjacencyMatrix )
+{
+	bool VT[adjacencyMatrix.size()];
+	for(int k = 0; k < adjacencyMatrix.size(); k++)
+	{
+		VT[k] = false;
+	}
+	VT[0] = true;
+	int result = 0;
+	
+	
+	for(int i = 1; i < adjacencyMatrix.size(); i++)
+	{
+		int temp = adjacencyMatrix[i][0];
+		for(int j = 0; j < i; j++)
+		{
+			if((adjacencyMatrix[i][j] < temp) && (adjacencyMatrix[i][j] > 0))
+			{
+				temp = adjacencyMatrix[i][j];
+				cout << "value: " << temp << "\n";
+			}
+		}
+		result = result + temp;
+	}
+	return result;
+}
